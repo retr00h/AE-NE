@@ -10,13 +10,16 @@ def compute_confusion_matrix(dataset_name,foreground_mask, ground_truth_input, u
         # cf definition of ground_truth_inputs on LASIESTA website
         # conversion to format 255=foreground, 0=background 128 = undefined
         max_ground_truth_input = np.amax(ground_truth_input, axis=2)
-        undefined_class_mask = (np.sum(ground_truth_input, axis=2) == 765).astype(np.int)
+        undefined_class_mask = (np.sum(ground_truth_input, axis=2) == 765).astype(int)
         ground_truth_input = undefined_class_mask * 128 + (1 - undefined_class_mask) * max_ground_truth_input
     elif dataset_name == "CDnet":
         if ground_truth_input.ndim == 3:
             ground_truth_input = np.amax(ground_truth_input, axis=2)
         if roi_mask.shape != ground_truth_input.shape:# roi shape for "traffic" video has wrong shape
             use_roi = False
+    elif dataset_name == 'SBMNet':
+        if ground_truth_input.ndim == 3:
+            ground_truth_input = np.amax(ground_truth_input, axis=2)
 
     true_mask = (foreground_mask == 255)
     false_mask = (foreground_mask == 0)
@@ -29,10 +32,10 @@ def compute_confusion_matrix(dataset_name,foreground_mask, ground_truth_input, u
         true_GT = np.logical_and(true_GT, roi_mask)
         false_GT = np.logical_and(false_GT, roi_mask)
 
-    tp = np.sum(np.logical_and(true_mask,true_GT).astype(np.int))
-    fp = np.sum(np.logical_and(true_mask,false_GT).astype(np.int))
-    tn = np.sum(np.logical_and(false_mask, false_GT).astype(np.int))
-    fn = np.sum(np.logical_and(false_mask, true_GT).astype(np.int))
+    tp = np.sum(np.logical_and(true_mask,true_GT).astype(int))
+    fp = np.sum(np.logical_and(true_mask,false_GT).astype(int))
+    tn = np.sum(np.logical_and(false_mask, false_GT).astype(int))
+    fn = np.sum(np.logical_and(false_mask, true_GT).astype(int))
 
     return tp, tn, fp, fn
 
