@@ -1,7 +1,7 @@
 import os
 import time
-import stats
-import main
+from AENE import stats
+from AENE import main
 
 def SBMnet_test(root_path, category_list):
     # Performs foreground mask and background generation for the categories
@@ -65,7 +65,7 @@ def SBMnet_test(root_path, category_list):
 
 
 if __name__ == '__main__':
-    root_path = 'D:\\ZZZZZZ_SBMnet_dataset'
+    root_path = '/content/gdrive/MyDrive/SBMnet_dataset/'
 
     category_list = ['backgroundMotion', 'basic', 'clutter', 'illuminationChanges',
                      'intermittentMotion', 'jitter', 'veryLong', 'veryShort']

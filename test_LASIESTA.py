@@ -1,7 +1,7 @@
 import torch
 import os
-import stats
-import main
+from AENE import stats
+from AENE import main
 
 def lasiesta_test(dataset_path,video_list):
     """ performs  foreground mask and backgroud generation for the LASIESTA videos listed in video_list,
