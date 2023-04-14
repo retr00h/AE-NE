@@ -4,7 +4,7 @@ from __future__ import print_function
 import torch
 from pytorch_model_summary import summary
 
-from AENE import models
+# import models
 
 
 def setup_background_models(device,image_height, image_width,complexity = False, test_model = True):
