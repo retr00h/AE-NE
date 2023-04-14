@@ -1,7 +1,7 @@
 import os
 import time
-# import stats
-# import main
+from AENE import stats
+from AENE import main
 
 def SBMnet_test(root_path, category_list):
     videos_with_gt = ['boulvardJam',

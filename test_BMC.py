@@ -1,8 +1,8 @@
 import torch
 import os
 import time
-# import stats
-# import main
+from AENE import stats
+from AENE import main
 
 def BMC2012_test(dataset_path, video_names_list):
     """ performs  foreground mask and backgroud generation for the BMC videos listed in video_names_list,

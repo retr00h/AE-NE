@@ -1,8 +1,8 @@
 
 import os
 import time
-# import stats
-# import main
+from AENE import stats
+from AENE import main
 
 def CDnet_test(root_path, category_list):
     """ performs  foreground mask and backgroud generation for the categories listed in category_list,
